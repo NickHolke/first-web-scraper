@@ -14,13 +14,15 @@ page_soup = soup(page_html, "html.parser")
 # get all item containers
 containers = page_soup.findAll("div", {"class": "item-container"})
 
+# create and open file to write to
 filename = "products.csv"
 f = open(filename, "w")
 
+# create csv headers
 headers = "brand, product_title, shipping \n"
 f.write(headers)
 
-
+# loop through item containers and write brand, title, shipping to csv
 for container in containers:
   divWithInfo = container.find("div", "item-info")
 
